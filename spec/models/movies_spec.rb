@@ -1,4 +1,6 @@
-RSpec.describe "Movies show page", type: :feature do
+require 'rails_helper'
+
+RSpec.describe Movie do
   before :each do
     @studio1 = Studio.create!(name: "Warners", location: "Hollywood")
     @studio2 = Studio.create!(name: "Disney", location: "LA")
@@ -17,26 +19,11 @@ RSpec.describe "Movies show page", type: :feature do
     MovieActor.create!(movie_id: @LOR.id, actor_id: @aragorn.id)
     MovieActor.create!(movie_id: @LOR.id, actor_id: @frodo.id)
   end
+  it "tests movie actor order" do
 
-  it "Visit movies show page and see all info including actors" do
-    visit "/movies/#{@cars.id}"
+    expect(@cars.order_actors_by_age).to eq([@owen, @larry])
 
-    expect(page).to have_content(@cars.title)
-    expect(page).to have_content(@owen.name)
-    expect(page).to have_content(@larry.name)
-
-    visit "/movies/#{@LOR.id}"
-
-    expect(page).to have_content(@LOR.title)
-    expect(page).to have_content(@aragorn.name)
-    expect(page).to have_content(@frodo.name)
-    expect(page).to have_content(@gimly.name)
   end
+
+
 end
-
-
-
-# Story 2
-# I see the movie's title, creation year, and genre,
-# and a list of all its actors from youngest to oldest.
-# And I see the average age of all of the movie's actors
