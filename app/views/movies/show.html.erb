@@ -1,4 +1,4 @@
 <h2>Movie <%= @movie.title %></h2>
-<% @movie.actors.each do |actor|%>
+<% @movie.order_actors_by_age.each do |actor|%>
   <%= actor.name %>
 <% end %>

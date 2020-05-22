@@ -20,7 +20,7 @@ RSpec.describe "Movies show page", type: :feature do
 
   it "Visit movies show page and see all info including actors" do
     visit "/movies/#{@cars.id}"
-    # save_and_open_page
+
     expect(page).to have_content(@cars.title)
     expect(page).to have_content(@owen.name)
     expect(page).to have_content(@larry.name)
@@ -33,10 +33,3 @@ RSpec.describe "Movies show page", type: :feature do
     expect(page).to have_content(@gimly.name)
   end
 end
-
-
-
-# Story 2
-# I see the movie's title, creation year, and genre,
-# and a list of all its actors from youngest to oldest.
-# And I see the average age of all of the movie's actors
