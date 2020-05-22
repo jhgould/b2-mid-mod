@@ -11,6 +11,7 @@ RSpec.describe "Movies show page", type: :feature do
     @owen = Actor.create!(name: "Ownen Wilson", age: 50)
     @larry = Actor.create!(name: "Larry", age: 55)
     @paul = Actor.create!(name: "Paul Walker", age: 30)
+    
   end
 
   it "Visit movies show page and see all info including actors" do
