@@ -32,4 +32,30 @@ RSpec.describe "Movies show page", type: :feature do
     expect(page).to have_content(@frodo.name)
     expect(page).to have_content(@gimly.name)
   end
+
+  it "user can add actors to movies" do
+    visit "/movies/#{@cars.id}"
+
+    fill_in "Name", with: "#{@paul.name}"
+    click_on "Submit"
+
+    expect(current_path).to eq("/movies/#{@cars.id}")
+    expect(page).to have_content(@cars.title)
+    expect(page).to have_content(@owen.name)
+    expect(page).to have_content(@larry.name)
+    expect(page).to have_content(@paul.name)
+
+    visit "/movies/#{@LOR.id}"
+
+    fill_in "Name", with: "#{@paul.name}"
+    click_on "Submit"
+
+    expect(current_path).to eq("/movies/#{@LOR.id}")
+    expect(page).to have_content(@LOR.title)
+    expect(page).to have_content(@aragorn.name)
+    expect(page).to have_content(@frodo.name)
+    expect(page).to have_content(@gimly.name)
+    expect(page).to have_content(@paul.name)
+  end
+
 end

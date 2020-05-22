@@ -2,3 +2,9 @@
 <% @movie.order_actors_by_age.each do |actor|%>
   <%= actor.name %>
 <% end %>
+
+
+<%= form_tag "/movies/#{@movie.id}/add_actor", method: :post %>
+  <%= label_tag :name, "Name: "  %>
+  <%= text_field_tag :name %>
+  <%= submit_tag "Submit" %>
