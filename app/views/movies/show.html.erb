@@ -1,1 +1,4 @@
 <h2>Movie <%= @movie.title %></h2>
+<% @movie.actors.each do |actor|%>
+  <%= actor.name %>
+<% end %>

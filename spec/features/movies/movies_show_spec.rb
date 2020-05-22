@@ -11,8 +11,8 @@ RSpec.describe "Movies show page", type: :feature do
     @owen = Actor.create!(name: "Ownen Wilson", age: 50)
     @larry = Actor.create!(name: "Larry", age: 55)
     @paul = Actor.create!(name: "Paul Walker", age: 30)
-    MovieActor.create!(movie_id: @cars.id, actor_id: @owen.id)
     MovieActor.create!(movie_id: @cars.id, actor_id: @larry.id)
+    MovieActor.create!(movie_id: @cars.id, actor_id: @owen.id)
     MovieActor.create!(movie_id: @LOR.id, actor_id: @gimly.id)
     MovieActor.create!(movie_id: @LOR.id, actor_id: @aragorn.id)
     MovieActor.create!(movie_id: @LOR.id, actor_id: @frodo.id)
@@ -20,7 +20,7 @@ RSpec.describe "Movies show page", type: :feature do
 
   it "Visit movies show page and see all info including actors" do
     visit "/movies/#{@cars.id}"
-
+    # save_and_open_page
     expect(page).to have_content(@cars.title)
     expect(page).to have_content(@owen.name)
     expect(page).to have_content(@larry.name)
